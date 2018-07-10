@@ -39,7 +39,7 @@
             var add_button1 = $(".add_ingredients_button"); //Add button ID
             var add_button2 = $(".add_instructions_button"); //Add button ID
 
-            var ingredients = 1; //initlal text box count
+            var ingredients = 0; //initlal text box count
             $(add_button1).click(function (e) { //on add input button click
                 e.preventDefault();
                 if (ingredients < max_fields) { //max input box allowed
@@ -48,7 +48,7 @@
                 }
             });
 
-            var instructions = 1; //initlal text box count
+            var instructions = 0; //initlal text box count
             $(add_button2).click(function (e) { //on add input button click
                 e.preventDefault();
                 if (instructions < max_fields) { //max input box allowed
