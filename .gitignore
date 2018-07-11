@@ -99,3 +99,4 @@ typings/
 
 # Serverless directories
 .serverless
+rs.code-workspace
