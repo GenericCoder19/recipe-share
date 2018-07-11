@@ -2,70 +2,34 @@
 <html>
 
 <head>
-    <title>Recipes Galore</title>
+    <title>Add new</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
-    <h1>Recipes Galore</h1>
+    <h1>Add a New Recipe</h1>
     <form action="/recipes" method="post">
         <label for="name">Name
             <input type="text" name="name">
         </label>
         <label for="image">Image
-            <input type="text" name="image">
+            <input type="text" name="image" placeholder="">
         </label>
         <label for="description">Description
             <input type="text" name="description">
         </label>
         <h4>Ingredients</h4>
-        <div class="input_ingredients_wrap">
-                <button class="add_ingredients_button">Add More Ingredients</button>
-                <div><input type="text" name="ingredients[0]"></div>
-        </div>
-        <h4>Steps</h4>
-        <div class="input_instructions_wrap">
-                <button class="add_instructions_button">Add More Instructions</button>
-                <div><input type="text" name="instructions[0]"></div>
-        </div>
+            <textarea name="ingredients" cols="30" rows="10" placeholder="Milk
+Bread
+Spices
+                "></textarea>
+        <h4>Ingredients</h4>
+            <textarea name="instructions" cols="30" rows="10" placeholder="Add Spices to Milk
+Add Bread to Milk
+Cook Bread Over Stove
+            "></textarea>
         <button>Submit</button>
     </form>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            var max_fields = 10; //maximum input boxes allowed
-            var wrapper1 = $(".input_ingredients_wrap"); //Fields wrapper
-            var wrapper2 = $(".input_instructions_wrap"); //Fields wrapper
-            var add_button1 = $(".add_ingredients_button"); //Add button ID
-            var add_button2 = $(".add_instructions_button"); //Add button ID
-
-            var ingredients = 0; //initlal text box count
-            $(add_button1).click(function (e) { //on add input button click
-                e.preventDefault();
-                if (ingredients < max_fields) { //max input box allowed
-                    ingredients++; //text box increment
-                    $(wrapper1).append('<div><input type="text" name="ingredients['+ ingredients +']"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
-                }
-            });
-
-            var instructions = 0; //initlal text box count
-            $(add_button2).click(function (e) { //on add input button click
-                e.preventDefault();
-                if (instructions < max_fields) { //max input box allowed
-                    instructions++; //text box increment
-                    $(wrapper2).append('<div><input type="text" name="instructions['+ instructions +']"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
-                }
-            });
-
-            $(wrapper1).on("click", ".remove_field", function (e) { //user click on remove text
-                e.preventDefault(); $(this).parent('div').remove(); x--;
-            })
-
-            $(wrapper2).on("click", ".remove_field", function (e) { //user click on remove text
-                e.preventDefault(); $(this).parent('div').remove(); x--;
-            })
-        });
-    </script>
 </body>
 
 </html>

@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var Recipe = require("../models/recipe");
+const splitLine = require("split-lines");
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -8,20 +10,20 @@ router.get('/', function (req, res, next) {
         if (err) {
             console.log(err);
         } else {
-            console.log(allRecipes[0]);
             res.render('recipes/index', { recipes: allRecipes });
         }
     })
 });
 
 router.post('/', function (req, res, next) {
-    let { name, image, description, ingredients, instructions} = {
+
+    let { name, image, description} = {
         name: req.body.name,
         image: req.body.image,
         description: req.body.description,
-        ingredients: req.body.ingredients,
-        instructions: req.body.instructions
     }
+    let ingredients = splitLine(req.body.ingredients);
+    let instructions = splitLine(req.body.instructions)
 
     let newRecipe = { name, image, description, ingredients, instructions};
     Recipe.create(newRecipe,function(err, newlyMade){
