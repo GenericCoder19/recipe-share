@@ -17,7 +17,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
 
-    let { name, image, description} = {
+    let { name, image, description } = {
         name: req.body.name,
         image: req.body.image,
         description: req.body.description,
@@ -25,12 +25,12 @@ router.post('/', function (req, res, next) {
     let ingredients = splitLine(req.body.ingredients);
     let instructions = splitLine(req.body.instructions)
 
-    let newRecipe = { name, image, description, ingredients, instructions};
-    Recipe.create(newRecipe,function(err, newlyMade){
-        if(err){
+    let newRecipe = { name, image, description, ingredients, instructions };
+    Recipe.create(newRecipe, function (err, newlyMade) {
+        if (err) {
             console.log(err);
         }
-        else{
+        else {
             res.redirect('/recipes');
         }
     })
@@ -38,6 +38,16 @@ router.post('/', function (req, res, next) {
 
 router.get('/new', function (req, res, next) {
     res.render('recipes/new');
+});
+
+router.get("/:id", function (req, res, next) {
+    Recipe.findById(req.params.id,function (err, foundRecipe) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('recipes/view', { recipe: foundRecipe });
+        }
+    })
 });
 
 module.exports = router;
