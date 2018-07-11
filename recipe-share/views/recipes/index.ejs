@@ -1,16 +1,40 @@
 <% include ../partials/header %>
-  <h1>Recipes Galore</h1>
-  <p>There Shall be a list!</p>
-  <% recipes.forEach(function(recipe){ %>
-    <p>
-      <h1>
-        <%= recipe.name %>
-      </h1>
-        <img src="<%= recipe.image %>" alt="">
-      <h4>
-        <%= recipe.description %>
-      </h4>
-      <a href="/recipes/<%= recipe._id %>"><button>View</button></a>
-    </p>
-    <%})%>
-<% include ../partials/footer %>
+  <h1 class="ui center aligned header">Recipes Galore</h1>
+  <div class="ui horizontal divider">
+    Bon Apetite!
+  </div>
+  <div class="container">
+    <div class="ui link cards">
+      <% recipes.forEach(function(recipe){ %>
+        <div class="raised card">
+          <div class="image">
+            <img style="height: 160px" src="<%= recipe.image %>">
+          </div>
+          <div class="content">
+            <div class="header">
+              <%= recipe.name %>
+            </div>
+            <div class="meta">
+              <%= moment(recipe.createdAt).format("MMMM DD YYYY"); %>
+            </div>
+            <div class="description">
+              <% if(recipe.description.length > 133) { %>
+                <%= recipe.description.substr(0,133) + "..." %>
+              <% } else { %>
+                <%= recipe.description %>
+              <% } %>
+            </div>
+          </div>
+          <div class="extra content">
+            <a href="/recipes/<%= recipe._id %>">
+              <div class="ui green button">View</div>
+            </a>
+          </div>
+        </div>
+        <%})%>
+    </div>
+  </div>
+  <div class="ui horizontal divider">
+    <a href="/recipes/new"><div class="ui green button">Add More!</div></a>
+  </div>
+  <% include ../partials/footer %>

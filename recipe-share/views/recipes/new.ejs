@@ -1,25 +1,38 @@
 <% include ../partials/header %>
-    <h1>Add a New Recipe</h1>
-    <form action="/recipes" method="post">
-        <label for="name">Name
-            <input type="text" name="name">
-        </label>
-        <label for="image">Image
-            <input type="text" name="image" placeholder="">
-        </label>
-        <label for="description">Description
-            <input type="text" name="description">
-        </label>
-        <h4>Ingredients</h4>
-            <textarea name="ingredients" cols="30" rows="10" placeholder="Milk
+    <h1 class="ui center aligned header">Recipes Galore</h1>
+    <div class="ui horizontal divider">
+        Add a New Recipe
+    </div>
+    <div class="ui container">
+        <form class="ui form" action="/recipes" method="post">
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" name="name" placeholder="Recipe Name ">
+            </div>
+            <div class="field">
+                <label for="image">Image Link</label>
+                <input type="text" name="image" placeholder="http://imgur.com/i/1.jpg">
+            </div>
+            <div class="field">
+                <label for="description">Description</label>
+                <input type="text" name="description" placeholder="What it is about!">
+            </div>
+            <div class="field">
+                <label for="ingredients">Ingredients - One per Line</label>
+                <textarea name="ingredients" cols="15" rows="7" placeholder="Milk
 Bread
 Spices
-                "></textarea>
-        <h4>Instructions</h4>
-            <textarea name="instructions" cols="30" rows="10" placeholder="Add Spices to Milk
+"></textarea>
+            </div>
+            <div class="field">
+                <label for="instructions">Instructions - One per Line</label>
+                <textarea name="instructions" cols="15" rows="7" placeholder="Add Spices to Milk
 Add Bread to Milk
 Cook Bread Over Stove
-            "></textarea>
-        <button>Submit</button>
-    </form>
-<% include ../partials/footer %>
+"></textarea>
+            </div>
+            <button class="fluid ui green button">Submit</button>
+        </form>
+    </div>
+
+    <% include ../partials/footer %>

@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Recipe = require("../models/recipe");
+var moment = require('moment');
 const splitLine = require("split-lines");
+
 
 
 /* GET home page. */
@@ -10,7 +12,7 @@ router.get('/', function (req, res, next) {
         if (err) {
             console.log(err);
         } else {
-            res.render('recipes/index', { recipes: allRecipes });
+            res.render('recipes/index', { recipes: allRecipes, moment: moment });
         }
     })
 });
