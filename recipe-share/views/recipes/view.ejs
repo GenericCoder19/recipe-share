@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Recipes Galore - <%= recipe.name %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
+<% include ../partials/header %>
     <p>
       <h1>
         <%= recipe.name %>
@@ -29,6 +21,4 @@
       </ol>
     </p>
     <a href="/recipes">Back</a>
-</body>
-
-</html>
+    <% include ../partials/footer %>

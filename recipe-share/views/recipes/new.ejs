@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Add new</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
+<% include ../partials/header %>
     <h1>Add a New Recipe</h1>
     <form action="/recipes" method="post">
         <label for="name">Name
@@ -30,6 +22,4 @@ Cook Bread Over Stove
             "></textarea>
         <button>Submit</button>
     </form>
-</body>
-
-</html>
+<% include ../partials/footer %>

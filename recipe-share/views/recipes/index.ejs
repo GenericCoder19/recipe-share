@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Recipes Galore</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
+<% include ../partials/header %>
   <h1>Recipes Galore</h1>
   <p>There Shall be a list!</p>
   <% recipes.forEach(function(recipe){ %>
@@ -21,6 +13,4 @@
       <a href="/recipes/<%= recipe._id %>"><button>View</button></a>
     </p>
     <%})%>
-</body>
-
-</html>
+<% include ../partials/footer %>
