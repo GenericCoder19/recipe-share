@@ -18,16 +18,7 @@
       <h4>
         <%= recipe.description %>
       </h4>
-      <ol>
-          <% recipe.ingredients.forEach(function(ingredient){ %>
-              <li><%= ingredient %></li>    
-          <%  }) %>
-      </ol>
-      <ol>
-          <% recipe.instructions.forEach(function(instruction){ %>
-              <li><%= instruction %></li>    
-          <%  }) %>
-      </ol>
+      <a href="/recipes/<%= recipe._id %>"><button>View</button></a>
     </p>
     <%})%>
 </body>
