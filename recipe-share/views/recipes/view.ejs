@@ -1,24 +1,44 @@
 <% include ../partials/header %>
-    <p>
-      <h1>
-        <%= recipe.name %>
-      </h1>
-        <img src="<%= recipe.image %>" alt="">
-      <h4>
-        <%= recipe.description %>
-      </h4>
-      <h4>Ingredients</h4>
-      <ol>
-          <% recipe.ingredients.forEach(function(ingredient){ %>
-              <li><%= ingredient %></li>    
-          <%  }) %>
-      </ol>
-      <h4>Instructions</h4>
-      <ol>
-          <% recipe.instructions.forEach(function(instruction){ %>
-              <li><%= instruction %></li>    
-          <%  }) %>
-      </ol>
-    </p>
-    <a href="/recipes">Back</a>
+    <div class="ui container">
+        <div class="ui segments">
+            <div class="ui segment">
+                    <h1 class="ui center aligned header">
+                            <%= recipe.name %>
+                        </h1>
+                        <div class="ui divider"></div>
+                        <img class="ui centered rounded large image" src="<%= recipe.image %>" alt="">
+                        <h3 class="ui block header">
+                            <%= recipe.description %>
+                        </h4>
+                        <div class="ui divider"></div>
+                        <h2 class="ui center aligned header">Ingredients</h4>
+                        <div class="ui large relaxed ordered list">
+                            <% recipe.ingredients.forEach(function(ingredient){ %>
+                                <div class="item">
+                                    <%= ingredient %>
+                                </div>
+                                <%  }) %>
+                        </div>
+                        <div class="ui divider"></div>
+                        <h2 class="ui center aligned header">Instructions</h4>
+                        <div class="ui large relaxed ordered list">
+                            <% recipe.instructions.forEach(function(instruction){ %>
+                                <div class="item">
+                                    <%= instruction %>
+                                </div>
+                                <%  }) %>
+                        </div>
+            </div>
+            <div class="ui segment">
+                    <a href="/recipes" class="negative ui animated fluid button" tabindex="0">
+                            <div class="visible content">Back</div>
+                            <div class="hidden content">
+                              <i class="left arrow icon"></i>
+                            </div>
+                    </a>
+            </div>
+        </div>
+
+    </div>
+
     <% include ../partials/footer %>
