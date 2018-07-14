@@ -9,11 +9,15 @@
     <form class="ui form"action="/signup" method="post">
         <div class="field">
             <label>Username</label>
-            <input name="username" placeholder="Username" type="text">
+            <input name="username" placeholder="Username" type="text" required>
+          </div>
+        <div class="field">
+            <label>Email</label>
+            <input name="email" placeholder="abc@this.com" type="email" required>
           </div>
           <div class="field">
             <label>Password</label>
-            <input name="password" placeholder="Password" type="password">
+            <input name="password" placeholder="Password" type="password" required>
           </div>
           <button class="ui button" type="submit">Submit</button>
     </form>
