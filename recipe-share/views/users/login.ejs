@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+<div class="ui segment">
+    <h1 class="ui header">
+        Login
+    </h1>
+    <% if (message.length > 0) { %>
+        <div class="ui message"><%= message %></div>
+    <% } %>
+    <form class="ui form"action="/login" method="post">
+        <div class="field">
+            <label>Username</label>
+            <input name="username" placeholder="Username" type="text">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input name="password" placeholder="Password" type="password">
+          </div>
+          <button class="ui button" type="submit">Submit</button>
+    </form>
+    <h4 class="ui dividing header">Need an account?</h4>
+    <a href="/users/signup" class="ui button">Sign Up</a>
+</div>
+<% include ../partials/footer %>
