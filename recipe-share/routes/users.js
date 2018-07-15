@@ -1,18 +1,32 @@
 var express = require('express');
 var router = express.Router();
 var middleware = require("../middleware");
+var passport = require('passport');
+require('../config/passport')(passport);
 
 router.get('/', function(req, res) {
-  res.render('users/index.ejs', {title: "User Login and Signup"}); // load the index.ejs file
+  res.render('users/index.ejs', {title: "User Login and Signup"});
 });
 
 router.get('/login', function(req, res) {
   res.render('users/login.ejs', {title: "User Login and Signup" ,message: req.flash('loginMessage') }); 
 });
 
+router.post('/login',passport.authenticate('local-login',{
+  successRedirect : '/users/profile',
+  failureRedirect : '/users/login',
+  failureFlash : true
+}));
+
 router.get('/signup', function(req, res) {
   res.render('users/signup.ejs', {title: "User Login and Signup", message: req.flash('signupMessage') });
 });
+
+router.post('/signup', passport.authenticate('local-signup',{
+  successRedirect : '/users/profile',
+  failureRedirect : '/users/signup',
+  failureFlash : true
+}));
 
 router.get('/profile', middleware.isLoggedIn, function(req, res) {
   res.render('users/profile.ejs', {
