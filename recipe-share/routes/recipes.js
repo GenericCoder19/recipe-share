@@ -3,7 +3,7 @@ var router = express.Router();
 var Recipe = require("../models/recipe");
 var moment = require('moment');
 const splitLine = require("split-lines");
-
+var middleware = require("../middleware");
 
 
 /* GET home page. */
@@ -38,7 +38,7 @@ router.post('/', function (req, res, next) {
     })
 });
 
-router.get('/new', function (req, res, next) {
+router.get('/new',middleware.isLoggedIn , function (req, res, next) {
     res.render('recipes/new');
 });
 

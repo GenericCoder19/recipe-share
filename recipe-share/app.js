@@ -24,8 +24,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser()); 
-app.use(session({ secret: '!4a3$te(xn1nkgy%n3n$6eqqra^xur435mea!=eigb%9p62e&w' })); // ONLY TEMPORARY TO CHANGE
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+app.use(session({ secret: '!4a3$te(xn1nkgy%n3n$6eqqra^xur435mea!=eigb%9p62e&w' ,resave: true, saveUninitialized: true})); // ONLY TEMPORARY TO CHANGE
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(flash()); 
@@ -36,8 +37,8 @@ app.use('/recipes', recipesRouter);
 app.use('/users', usersRouter);
 
 //Connect to DB
-let url = "mongodb://localhost/recipes_v1";
-mongoose.connect(url);
+let url = "mongodb://localhost:27017/recipes_v1";
+mongoose.connect(url, { useNewUrlParser: true });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

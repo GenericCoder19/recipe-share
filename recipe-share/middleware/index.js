@@ -3,7 +3,7 @@ const middleware = {};
 middleware.isLoggedIn = function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
       return next();
-    res.redirect('/');
+    res.redirect('/users');
 }
 
 module.exports = middleware;

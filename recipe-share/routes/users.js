@@ -13,7 +13,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login',passport.authenticate('local-login',{
-  successRedirect : '/users/profile',
+  successRedirect : '/',
   failureRedirect : '/users/login',
   failureFlash : true
 }));
@@ -23,7 +23,7 @@ router.get('/signup', function(req, res) {
 });
 
 router.post('/signup', passport.authenticate('local-signup',{
-  successRedirect : '/users/profile',
+  successRedirect : '/recipes',
   failureRedirect : '/users/signup',
   failureFlash : true
 }));
@@ -35,7 +35,7 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
   });
 });
 
-router.get('/users/logout', function(req, res) {
+router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
