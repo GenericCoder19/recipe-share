@@ -100,3 +100,4 @@ typings/
 # Serverless directories
 .serverless
 rs.code-workspace
+recipe-share/config/auth.js

@@ -35,6 +35,13 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
   });
 });
 
+router.get('/auth/google', passport.authenticate('google',{scope: ['profile', 'email']}));
+
+router.get('/auth/google/callback', passport.authenticate('google',{
+  successRedirect: '/',
+  failureRedirect: '/users'
+}))
+
 router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
