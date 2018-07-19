@@ -16,6 +16,9 @@
             </div>
             <div class="meta">
               <%= moment(recipe.createdAt).format("MMMM DD YYYY"); %>
+              <span class="right floated">
+              <%= recipe.createdBy %>
+              </span>
             </div>
             <div class="description">
               <% if(recipe.description.length > 133) { %>
