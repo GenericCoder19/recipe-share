@@ -5,9 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require("mongoose");
 var passport = require('passport');
-var flash    = require('connect-flash');
-var bodyParser   = require('body-parser');
-var session      = require('express-session');
+var flash = require('connect-flash');
+var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -26,10 +26,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
-app.use(session({ secret: '!4a3$te(xn1nkgy%n3n$6eqqra^xur435mea!=eigb%9p62e&w' ,resave: true, saveUninitialized: true})); // ONLY TEMPORARY TO CHANGE
+app.use(session({ secret: '!4a3$te(xn1nkgy%n3n$6eqqra^xur435mea!=eigb%9p62e&w', resave: true, saveUninitialized: true })); // ONLY TEMPORARY TO CHANGE
 app.use(passport.initialize());
-app.use(passport.session()); 
-app.use(flash()); 
+app.use(passport.session());
+app.use(flash());
 
 //ROUTERS
 app.use('/', indexRouter);
@@ -41,12 +41,12 @@ let url = "mongodb://localhost:27017/recipes_v1";
 mongoose.connect(url, { useNewUrlParser: true });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
