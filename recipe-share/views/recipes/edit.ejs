@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+    <h1 class="ui center aligned header">Recipes Galore</h1>
+    <div class="ui horizontal divider">
+        Add a New Recipe
+    </div>
+    <div class="ui container">
+        <form class="ui form" action="/recipes/<%=recipe._id%>?_method=PUT" method="post">
+            <div class="field">
+                <label for="name">Name</label>
+                <input type="text" name="name" placeholder="Recipe Name " value="<%= recipe.name %>">
+            </div>
+            <div class="field">
+                <label for="image">Image Link</label>
+                <input type="text" name="image" placeholder="http://imgur.com/i/1.jpg" value="<%= recipe.image %>">
+            </div>
+            <div class="field">
+                <label for="description">Description</label>
+                <input type="text" name="description" placeholder="What it is about!" value="<%= recipe.description %>">
+            </div>
+            <div class="field">
+                <label for="ingredients">Ingredients - One per Line</label>
+                <textarea name="ingredients" cols="15" rows="7" placeholder="Milk
+Bread
+Spices
+" ><% recipe.ingredients.forEach(function(ingredient){ %>
+<%= ingredient %>
+<% }); %>
+</textarea>
+            </div>
+            <div class="field">
+                <label for="instructions">Instructions - One per Line</label>
+                <textarea name="instructions" cols="15" rows="7" placeholder="Add Spices to Milk
+Add Bread to Milk
+Cook Bread Over Stove
+" ><% recipe.instructions.forEach(function(instruction){ %>
+<%= instruction %>
+<% }); %>
+</textarea>
+            </div>
+            <button class="fluid ui green button">Submit</button>
+        </form>
+    </div>
+
+    <% include ../partials/footer %>

@@ -2,41 +2,56 @@
     <div class="ui container">
         <div class="ui segments">
             <div class="ui segment">
-                    <h1 class="ui center aligned header">
-                            <%= recipe.name %>
-                        </h1>
-                        <div class="ui divider"></div>
-                        <img class="ui centered rounded large image" src="<%= recipe.image %>" alt="">
-                        <h3 class="ui block header">
-                            <%= recipe.description %>
+                <h1 class="ui center aligned header">
+                    <%= recipe.name %>
+                </h1>
+                <h3 class="ui right header">
+                    By
+                    <%= recipe.createdBy %>
+                </h3>
+                <div class="ui divider"></div>
+                <img class="ui centered rounded large image" src="<%= recipe.image %>" alt="">
+                <h3 class="ui block header">
+                    <%= recipe.description %>
                         </h4>
                         <div class="ui divider"></div>
                         <h2 class="ui center aligned header">Ingredients</h4>
-                        <div class="ui large relaxed ordered list">
-                            <% recipe.ingredients.forEach(function(ingredient){ %>
-                                <div class="item">
-                                    <%= ingredient %>
+                            <div class="ui large relaxed ordered list">
+                                <% recipe.ingredients.forEach(function(ingredient){ %>
+                                    <div class="item">
+                                        <%= ingredient %>
+                                    </div>
+                                    <%  }) %>
+                            </div>
+                            <div class="ui divider"></div>
+                            <h2 class="ui center aligned header">Instructions</h4>
+                                <div class="ui large relaxed ordered list">
+                                    <% recipe.instructions.forEach(function(instruction){ %>
+                                        <div class="item">
+                                            <%= instruction %>
+                                        </div>
+                                        <%  }) %>
                                 </div>
-                                <%  }) %>
-                        </div>
-                        <div class="ui divider"></div>
-                        <h2 class="ui center aligned header">Instructions</h4>
-                        <div class="ui large relaxed ordered list">
-                            <% recipe.instructions.forEach(function(instruction){ %>
-                                <div class="item">
-                                    <%= instruction %>
-                                </div>
-                                <%  }) %>
-                        </div>
             </div>
-            <div class="ui segment">
-                    <a href="/recipes" class="negative ui animated fluid button" tabindex="0">
+            <% if(currentUser && recipe.createdByID == locals.currentUser._id){ %>
+                <div class="ui center aligned segment">
+                    <div class="ui buttons">
+                        <a href="/recipes/<%= recipe._id %>/edit" class="ui orange button">Edit</a>
+                        <div class="or"></div>
+                        <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+                            <button href="" class="ui red button">Delete (No Confirmation)</button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
+                    <div class="ui segment">
+                        <a href="/recipes" class="negative ui animated fluid button" tabindex="0">
                             <div class="visible content">Back</div>
                             <div class="hidden content">
-                              <i class="left arrow icon"></i>
+                                <i class="left arrow icon"></i>
                             </div>
-                    </a>
-            </div>
+                        </a>
+                    </div>
         </div>
 
     </div>

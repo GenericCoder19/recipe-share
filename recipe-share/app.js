@@ -8,6 +8,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var methodOverride = require('method-override');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -30,6 +31,7 @@ app.use(session({ secret: '!4a3$te(xn1nkgy%n3n$6eqqra^xur435mea!=eigb%9p62e&w', 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(methodOverride("_method"));
 
 //ROUTERS
 app.use('/', indexRouter);
@@ -43,6 +45,14 @@ mongoose.connect(url, { useNewUrlParser: true });
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
+});
+
+//Pass User to all pages
+app.use((req, res, next) => {
+  app.locals.currentUser = req.user; // req.user is an authenticated user
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
+  next();
 });
 
 // error handler
